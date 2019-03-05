@@ -11,7 +11,7 @@ class ProductDetails extends StatelessWidget {
           child: Column(
             children: <Widget>[
               RaisedButton(
-                child: Text('Return'),
+                child: Text('Return to last screen'),
                 onPressed: () => Navigator.pop(context),
               )
             ],
