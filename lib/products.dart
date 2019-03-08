@@ -3,27 +3,55 @@ import 'package:flutter/material.dart';
 import './pages/product_details.dart';
 
 class Products extends StatelessWidget {
-  final List<String> products;
+  final List<Map<String, String>> products;
+  final Function deleteProduct;
 
-  Products([this.products = const []]) {
+  Products(this.products, {this.deleteProduct}) {
     print('[Products Widget] Constructor');
+  }
+
+  Widget _buildProductItem(BuildContext context, int index) {
+    return InkWell(
+        onTap: () {
+          print('here');
+          Navigator.push<bool>(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => ProductDetails(
+                  products[index]['title'], products[index]['image']),
+            ),
+          ).then((bool value) {
+            if (value) {
+              deleteProduct(index);
+            }
+          });
+        },
+        child: Card(
+          child: Column(
+            children: <Widget>[
+              Image.asset(products[index]['image']),
+              Text(products[index]['title']),
+            ],
+          ),
+        ));
+  }
+
+  Widget _buildProductList() {
+    Widget productCards;
+    if (products.length > 0) {
+      productCards = ListView.builder(
+        itemBuilder: _buildProductItem,
+        itemCount: products.length,
+      );
+    } else {
+      productCards = Container();
+    }
+    return productCards;
   }
 
   @override
   Widget build(BuildContext context) {
     print('[Products Widget] build()');
-    return ListView(children:
-      products
-          .map(
-            (element) => Card(
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset('assets/food.jpg'),
-                      Text(element)
-                    ],
-                  ),
-                ),
-          )
-          .toList());
+    return _buildProductList();
   }
 }

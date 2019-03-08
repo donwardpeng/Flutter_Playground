@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatelessWidget {
+  final String title;
+  final String imageUrl;
+
+  ProductDetails(this.title, this.imageUrl);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,10 +15,14 @@ class ProductDetails extends StatelessWidget {
         body: SizedBox.expand(
           child: Column(
             children: <Widget>[
+              OutlineButton(
+                child: Text('Delete from List'),
+                onPressed: () => Navigator.pop(context, true),
+              ),
               RaisedButton(
                 child: Text('Return to last screen'),
-                onPressed: () => Navigator.pop(context),
-              )
+                onPressed: () => Navigator.pop(context, false),
+              ),
             ],
           ),
         ));
