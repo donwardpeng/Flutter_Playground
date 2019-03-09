@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
 
-import './pages/main_page.dart';
+import './pages/login.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.light,
             primarySwatch: Colors.deepOrange,
             accentColor: Colors.deepPurple),
-        home: MainPage());
+        home: LoginScreen());
   }
 }
