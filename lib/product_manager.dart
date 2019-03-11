@@ -53,14 +53,26 @@ class _ProductManagerState extends State<ProductManager> {
   @override
   Widget build(BuildContext context) {
     print('[ProductManager State] build()');
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.all(10.0),
-          child: ProductControl(_addProduct),
-        ),
-        Expanded(child: Products(_products, deleteProduct: _deleteProduct))
-      ],
-    );
+    return Stack(children: <Widget>[
+      Column(
+        children: [
+          // Container(
+          //   margin: EdgeInsets.all(10.0),
+          //   child: ProductControl(_addProduct),
+          // ),
+          Expanded(child: Products(_products, deleteProduct: _deleteProduct))
+        ],
+      ),
+      Positioned(
+          bottom: 16.0,
+          right: 16.0,
+          child: FloatingActionButton(
+            onPressed: () {
+              _addProduct({'title': 'Chocolate', 'image': 'assets/food.jpg'});
+            },
+            tooltip: 'Increment',
+            child: Icon(Icons.add),
+          ))
+    ]);
   }
 }

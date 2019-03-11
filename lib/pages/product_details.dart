@@ -4,24 +4,30 @@ import 'dart:async';
 class ProductDetails extends StatelessWidget {
   final String title;
   final String imageUrl;
+  final int index;
 
-  ProductDetails(this.title, this.imageUrl);
+  ProductDetails(this.title, this.imageUrl, this.index);
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: () {
-          Navigator.pop(context, false);
-          return Future.value(true);
-        },
-        child: Scaffold(
+    return
+        // WillPopScope(
+        //     onWillPop: () {
+        //       Navigator.pop(context, false);
+        //       return Future.value(true);
+        //     },
+        //     child:
+        Scaffold(
             appBar: AppBar(
               title: Text('Product Details'),
             ),
             body: SizedBox.expand(
               child: Column(
                 children: <Widget>[
-                  Image.asset(imageUrl),
+                  Hero(
+                    tag: 'hero_product_details' + index.toString(),
+                    child: Image.asset(imageUrl),
+                  ),
                   Text(title),
                   OutlineButton(
                     child: Text('Delete from List'),
@@ -33,6 +39,7 @@ class ProductDetails extends StatelessWidget {
                   ),
                 ],
               ),
-            )));
+            ));
+    // );
   }
 }

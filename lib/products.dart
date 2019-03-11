@@ -13,12 +13,12 @@ class Products extends StatelessWidget {
   Widget _buildProductItem(BuildContext context, int index) {
     return InkWell(
         onTap: () {
-          print('here');
+          print('tag = ' + 'hero_product_details' + index.toString());
           Navigator.push<bool>(
             context,
             MaterialPageRoute(
               builder: (BuildContext context) => ProductDetails(
-                  products[index]['title'], products[index]['image']),
+                  products[index]['title'], products[index]['image'], index),
             ),
           ).then((bool value) {
             if (value) {
@@ -29,7 +29,10 @@ class Products extends StatelessWidget {
         child: Card(
           child: Column(
             children: <Widget>[
-              Image.asset(products[index]['image']),
+              Hero(
+                tag: 'hero_product_details' + index.toString() ,
+                child: Image.asset(products[index]['image']),
+              ),
               Text(products[index]['title']),
             ],
           ),
