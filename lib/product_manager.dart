@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import './products.dart';
-import './product_control.dart';
-import './pages/product_details.dart';
 
 class ProductManager extends StatefulWidget {
   final Map<String, String> startingProduct;
