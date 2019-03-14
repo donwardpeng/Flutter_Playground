@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './main_page.dart';
+import '../password_input.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -18,13 +19,8 @@ class LoginScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 36.0),
                 ),
-                Row(children: <Widget>[
-                  Text('Password'),
-                ]),
-                TextField(
-                  decoration: InputDecoration(hintText: 'Password'),
-                  obscureText: true,
-                ),
+                Row(children: <Widget>[Text('Password'),]),
+                PasswordInput(),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 36.0),
                 ),
