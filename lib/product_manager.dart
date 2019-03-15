@@ -52,12 +52,15 @@ class _ProductManagerState extends State<ProductManager> {
   Widget build(BuildContext context) {
     print('[ProductManager State] build()');
     return Stack(children: <Widget>[
+      Hero(
+        tag: 'GDGWindsorHeroImage',
+        child: Image.asset('assets/GDGWindsor.png'),
+      ),
       Column(
         children: [
-          // Container(
-          //   margin: EdgeInsets.all(10.0),
-          //   child: ProductControl(_addProduct),
-          // ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0.0, 80.0, 0.0, 0.0),
+          ),
           Expanded(child: Products(_products, deleteProduct: _deleteProduct))
         ],
       ),

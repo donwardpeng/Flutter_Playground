@@ -14,21 +14,30 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                Hero(
+                  tag: 'GDGWindsorHeroImage',
+                  child: Image.asset('assets/GDGWindsor.png'),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 48.0),
+                ),
                 Row(children: <Widget>[Text('Username')]),
                 TextField(decoration: InputDecoration(hintText: 'Username')),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 36.0),
                 ),
-                Row(children: <Widget>[Text('Password'),]),
+                Row(children: <Widget>[
+                  Text('Password'),
+                ]),
                 PasswordInput(),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 36.0),
+                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 48.0),
                 ),
                 RaisedButton(
                     child: Text('LOGIN'),
                     color: Theme.of(context).primaryColor,
                     onPressed: () {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) => MainPage()));
