@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
+import 'dart:async';
 
 import './main_page.dart';
 import '../password_input.dart';
 
 class LoginScreen extends StatelessWidget {
+  final FirebaseAnalytics analytics;
+  final FirebaseAnalyticsObserver observer;
+
+  LoginScreen({this.analytics, this.observer});
+
+  Future<void> _testSetCurrentScreen() async {
+    await analytics.setCurrentScreen(
+      screenName: 'Login Screen',
+      screenClassOverride: 'Login',
+    );
+    print('Analytics: setCurrentScreen done');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +53,7 @@ class LoginScreen extends StatelessWidget {
                     child: Text('LOGIN'),
                     color: Theme.of(context).primaryColor,
                     onPressed: () {
+                      _testSetCurrentScreen();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
