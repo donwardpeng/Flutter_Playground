@@ -5,4 +5,3 @@ FLUTTER_TARGET=/Users/dward1/AndroidStudioProjects/MC/Flutter_Playground/lib/mai
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build/ios
 FLUTTER_FRAMEWORK_DIR=/Users/dward1/Documents/flutter/bin/cache/artifacts/engine/ios
-TRACK_WIDGET_CREATION=true
